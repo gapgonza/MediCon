@@ -2,6 +2,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../models/db'); 
 
+const db = require('../models/db');
 const Agenda = require('./agenda')(sequelize, Sequelize.DataTypes); 
 const Paciente = require('./paciente')(sequelize, Sequelize.DataTypes);
 const Profesional = require('./profesional')(sequelize, Sequelize.DataTypes);
