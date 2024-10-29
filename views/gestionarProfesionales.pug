@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    h1= title
+    a(href='/admin/profesionales/nuevo', class='btn btn-primary mb-3') Agregar Nuevo Profesional
+    table.table
+        thead
+            tr
+                th Nombre
+                th Apellido
+                th Especialidad
+                th Documento
+                th Estado
+                th Sucursal
+                th Acciones
+        tbody
+            each profesional in profesionales
+                tr
+                    td= profesional.Usuario ? profesional.Usuario.nombre : 'N/A'
+                    td= profesional.Usuario ? profesional.Usuario.apellido : 'N/A'
+                    td= profesional.Especialidad ? profesional.Especialidad.nombre : 'N/A'
+                    td= profesional.Usuario ? profesional.Usuario.dni : 'N/A'
+                    td= profesional.Estado ? profesional.Estado.nombre : 'N/A'
+                    td= profesional.Sucursal ? profesional.Sucursal.nombre : 'N/A'
+                    td
+                        a(href=`/admin/profesionales/editar/${profesional.usuario_id}`, class='btn btn-warning') Editar
+                        form(action=`/admin/profesionales/eliminar/${profesional.usuario_id}`, method='POST', style='display:inline;')
+                            button(type='submit', class='btn btn-danger') Eliminar
+    
+    a(href='/admin', class='btn btn-secondary mt-3') Volver
+

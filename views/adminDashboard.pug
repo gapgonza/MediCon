@@ -1,0 +1,16 @@
+//-adminDashboard.pug
+extends layout
+
+block content
+    div(class='container mt-5')
+        h1 Panel de Administración
+        p Bienvenido, Administrador
+        
+        
+        div(class='list-group')
+            a(href='/admin/agendas', class='list-group-item list-group-item-action') Gestionar Agendas
+            a(href='/admin/pacientes', class='list-group-item list-group-item-action') Gestionar Pacientes
+            a(href='/admin/profesionales', class='list-group-item list-group-item-action') Gestionar Profesionales
+            a(href='/admin/turnos', class='list-group-item list-group-item-action') Gestionar Turnos
+            a(href='/admin/reportes', class='list-group-item list-group-item-action') Generar Reportes
+            a(href='/admin/logout', class='list-group-item list-group-item-action text-danger') Cerrar Sesión

@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    h1= title
+    form(action=`/admin/pacientes/editar/${paciente.paciente_id}`, method='POST')
+        div.form-group
+            label(for='obra_social_id') Obra Social
+            select(name='obra_social_id', required)
+                each obra in obrasSociales
+                    option(value=obra.obra_social_id, selected=paciente.obra_social_id == obra.obra_social_id) #{obra.nombre}
+        div.form-group
+            label(for='contacto') Contacto
+            input(type='text', name='contacto', value=paciente.contacto, required)
+        div.form-group
+            label(for='direccion') Dirección
+            input(type='text', name='direccion', value=paciente.direccion, required)
+        div.form-group
+            label(for='email') Email
+            input(type='email', name='email', value=paciente.email, required)
+        button(type='submit', class='btn btn-primary') Guardar Cambios
+    a(href='/admin/pacientes', class='btn btn-secondary mt-3') Volver

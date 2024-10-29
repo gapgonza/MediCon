@@ -1,0 +1,166 @@
+extends layout
+
+block content
+    h1 Solicitud de Turno Médico
+
+    form(action="/turnos/solicitar", method="POST")
+        
+        div.form-group
+            label(for="especialidad") Especialidad
+            select(name="especialidad_id", id="especialidad", required)
+                option(value='') Seleccione una especialidad
+                each especialidad in especialidades
+                    option(value=especialidad.especialidad_id)= especialidad.nombre
+
+        
+        div.form-group
+            label(for="profesional") Profesional
+            select(name="medico_id", id="profesional", required)
+                option(value='') Seleccione un profesional
+                
+
+        
+        div.form-group
+            button(type="button" id="btn-siguiente") Siguiente
+
+        
+        div#seleccion-turno(style='display:none;')
+            div.form-group
+                label(for="fecha") Fecha
+                input(type="date" name="fecha" id="fecha" required)
+
+            div.form-group
+                label(for="hora") Hora
+                select(name="hora", id="hora", required)
+                    option(value='') Seleccione una hora
+                    
+
+            button(type="submit", class="btn btn-primary") Confirmar Turno
+
+        
+        div.form-group
+            label(for="motivo_consulta") Motivo de Consulta (Opcional)
+            textarea(name="motivo_consulta", id="motivo_consulta")
+
+        
+        div.form-group
+            label(for="obra_social") Obra Social
+            select(name="obra_social_id", id="obra_social", required)
+                each obra_social in obras_sociales
+                    option(value=obra_social.obra_social_id)= obra_social.nombre
+
+        
+        a(href='/', class='btn btn-secondary mt-3') Volver
+
+    
+    script.
+        document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('btn-siguiente').addEventListener('click', function() {
+            document.getElementById('seleccion-turno').style.display = 'block'; 
+        });
+
+        document.getElementById('especialidad').addEventListener('change', actualizarProfesionales);
+
+        document.getElementById('fecha').addEventListener('change', function() {
+            const fechaSeleccionada = this.value;
+            const medicoId = document.getElementById('profesional').value;
+
+            if (fechaSeleccionada && medicoId) {
+                fetch(`/api/horarios?medico_id=${medicoId}&fecha=${fechaSeleccionada}`)
+                    .then(response => response.json())
+                    .then(horarios => {
+                        const horaSelect = document.getElementById('hora');
+                        horaSelect.innerHTML = '<option value="">Seleccione una hora</option>'; 
+
+                        horarios.forEach(hora => {
+                            const option = document.createElement('option');
+                            option.value = hora; 
+                            option.textContent = hora; 
+                            horaSelect.appendChild(option);
+                        });
+                    })
+                    .catch(error => console.error('Error al cargar horarios:', error));
+            }
+        });
+
+        function actualizarProfesionales() {
+            const especialidadId = document.getElementById('especialidad').value;
+            const profesionalSelect = document.getElementById('profesional');
+
+            profesionalSelect.innerHTML = '<option value="">Seleccione un profesional</option>';
+
+            if (especialidadId) {
+                fetch(`/api/profesionales?especialidad_id=${especialidadId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        data.forEach(profesional => {
+                            const option = document.createElement('option');
+                            option.value = profesional.medico_id; 
+                            option.textContent = `${profesional.Usuario.nombre} ${profesional.Usuario.apellido}`; 
+                            profesionalSelect.appendChild(option);
+                        });
+                    })
+                    .catch(error => console.error('Error al cargar profesionales:', error));
+            }
+        }
+        });
+
+
+
+//-ESTE FUNCIONA PEEEROOOOO
+//- extends layout
+
+//- block content
+//-     h1 Solicitud de Turno Médico
+
+//-     form(action="/turnos/solicitar", method="POST")
+//-         div.form-group
+//-             label(for="especialidad") Especialidad
+//-             select(name="especialidad_id", id="especialidad", required onchange="actualizarProfesionales()")
+//-                 each especialidad in especialidades
+//-                     option(value=especialidad.especialidad_id)= especialidad.nombre
+
+//-         div.form-group
+//-             label(for="profesional") Profesional
+//-             select(name="medico_id", id="profesional", required)
+//-                 option(value='') Seleccione un profesional
+                
+
+//-         div#calendar-container
+            
+
+//-         div.form-group
+//-             label(for="motivo_consulta") Motivo de Consulta (Opcional)
+//-             textarea(name="motivo_consulta", id="motivo_consulta")
+
+//-         div.form-group
+//-             label(for="obra_social") Obra Social
+//-             select(name="obra_social_id", id="obra_social", required)
+//-                 each obra_social in obras_sociales
+//-                     option(value=obra_social.obra_social_id)= obra_social.nombre
+
+//-         button(type="submit", class="btn btn-primary") Confirmar Turno
+//-     a(href='/', class='btn btn-secondary mt-3') Volver
+
+//-     script.
+//-         function actualizarProfesionales() {
+//-             const especialidadId = document.getElementById('especialidad').value;
+//-             const profesionalSelect = document.getElementById('profesional');
+
+            
+//-             profesionalSelect.innerHTML = '<option value="">Seleccione un profesional</option>';
+
+//-             if (especialidadId) {
+//-                 fetch(`/api/profesionales?especialidad_id=${especialidadId}`)
+//-                     .then(response => response.json())
+//-                     .then(data => {
+//-                         data.forEach(profesional => {
+//-                         const option = document.createElement('option');
+//-                         option.value = profesional.medico_id; 
+//-                         option.textContent = `${profesional.Usuario.nombre} ${profesional.Usuario.apellido}`; 
+//-                         profesionalSelect.appendChild(option);
+//-                         });
+//-                     })
+//-                     .catch(error => console.error('Error al cargar profesionales:', error));
+//-             }
+//-         }

@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    div(class='text-container')
+        h1= title
+        p= message
+    div(class='button-container') 
+        a(href='/administracion', class='btn btn-primary role-button') Administración
+        a(href='/profesionales', class='btn btn-success role-button') Profesionales
+        a(href='/solicitud', class='btn btn-info role-button') Solicitar Turno

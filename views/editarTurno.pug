@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h1 Editar Estado del Turno
+
+    form(action=`/admin/turnos/actualizar/${turno.turno_id}`, method="POST")
+        div.form-group
+            label(for="estado_id") Estado
+            select(name="estado_id", id="estado_id", required)
+                option(value="1", selected=turno.estado_id == 1) Activo
+                option(value="2", selected=turno.estado_id == 2) Cancelado
+                
+        button(type="submit", class="btn btn-primary") Actualizar Estado
+
+    a(href='/admin/turnos', class='btn btn-secondary mt-3') Volver

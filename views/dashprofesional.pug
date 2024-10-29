@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1= title
+
+    table.table
+        thead
+            tr
+                th Nombre
+                th Especialidad
+                th Estado
+                th Sucursal
+        tbody
+            each profesional in profesionales
+                tr
+                    td= profesional.nombre_completo
+                    td= profesional.especialidad
+                    td= profesional.estado
+                    td= profesional.sucursal
+
+  
+    a(href='/', class='btn btn-primary') Gracias!

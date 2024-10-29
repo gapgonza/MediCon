@@ -1,0 +1,34 @@
+extends layout
+
+block content
+    h1= title
+    a(href='/admin/agendas/nueva', class='btn btn-primary') Agregar Nueva Agenda
+    table.table
+        thead
+            tr
+                th ID
+                th Usuario
+                th Especialidad
+                th Sucursal
+                th Fecha
+                th Hora Inicio
+                th Hora Fin
+                th Sobreturnos
+                th Acciones
+        tbody
+            each agenda in agendas
+                tr
+                    td= agenda.agenda_id
+                    td= agenda.Usuario ? agenda.Usuario.nombre : 'N/A'
+                    td= agenda.Especialidad ? agenda.Especialidad.nombre : 'N/A'
+                    td= agenda.Sucursal ? agenda.Sucursal.nombre : 'N/A'
+                    td= agenda.fecha
+                    td= agenda.hora_inicio
+                    td= agenda.hora_fin
+                    td= agenda.max_sobreturnos
+                    td
+                        a(href=`/admin/agendas/editar/${agenda.agenda_id}`, class='btn btn-warning') Editar
+                        form(action=`/admin/agendas/eliminar/${agenda.agenda_id}`, method='POST', style='display:inline;')
+                            button(type='submit', class='btn btn-danger') Eliminar
+    
+    a(href='/admin', class='btn btn-secondary mt-3') Volver

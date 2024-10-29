@@ -1,0 +1,60 @@
+extends layout
+
+block content
+    h1= title
+    form(action='/admin/agendas/nueva', method='POST')
+        
+        div.form-group
+            label(for='usuario_id') Profesional
+            select#usuario_id.form-control(name='usuario_id', required)
+                option(value='') Selecciona un Profesional
+                each profesional in profesionales
+                    option(value=profesional.id)= profesional.nombre_completo
+
+        
+        div.form-group
+            label(for='especialidad_id') Especialidad
+            select#especialidad_id.form-control(name='especialidad_id', required)
+                option(value='') Selecciona una Especialidad
+                each especialidad in especialidades
+                    option(value=especialidad.especialidad_id)= especialidad.nombre
+
+        
+        div.form-group
+            label(for='sucursal_id') Sucursal
+            select#sucursal_id.form-control(name='sucursal_id', required)
+                option(value='') Selecciona una Sucursal
+                each sucursal in sucursales
+                    option(value=sucursal.sucursal_id)= sucursal.nombre
+
+        
+        div.form-group
+            label(for='fecha') Fecha
+            input#fecha.form-control(type='date', name='fecha', required)
+
+        
+        div.form-group
+            label(for='hora_inicio') Hora Inicio
+            input#hora_inicio.form-control(type='time', name='hora_inicio', required)
+
+        
+        div.form-group
+            label(for='hora_fin') Hora Fin
+            input#hora_fin.form-control(type='time', name='hora_fin', required)
+
+        
+        div.form-group
+            label(for='estado_id') Estado
+            select#estado_id.form-control(name='estado_id', required)
+                option(value='') Selecciona un Estado
+                each estado in estados
+                    option(value=estado.estado_id)= estado.nombre
+
+        
+        div.form-group
+            label(for='max_sobreturnos') Máx Sobreturnos
+            input#max_sobreturnos.form-control(type='number', name='max_sobreturnos', required)
+
+        
+        button.btn.btn-primary(type='submit') Agregar Agenda
+    a(href='/admin/agendas', class='btn btn-secondary mt-3') Volver

@@ -1,0 +1,36 @@
+//-gestionarPacientes.pug
+extends layout
+
+block content
+    h1= title
+    a(href='/admin/pacientes/nuevo', class='btn btn-primary mb-3') Agregar Nuevo Paciente
+    table.table
+        thead
+            tr
+                th Nombre
+                th Apellido
+                th Documento
+                th Obra Social
+                th contacto
+                th direccion
+                th Fecha de Nacimiento
+                th email
+                th Acciones
+        tbody
+            each paciente in pacientes
+                tr
+                    td= paciente.nombre
+                    td= paciente.apellido
+                    td= paciente.dni
+                    td= paciente.obra_social_id
+                    td= paciente.contacto
+                    td= paciente.direccion
+                    td= paciente.fecha_nacimiento
+                    td= paciente.email
+                    td
+                        a(href=`/admin/pacientes/editar/${paciente.paciente_id}`, class='btn btn-warning') Editar
+                        form(action=`/admin/pacientes/eliminar/${paciente.paciente_id}`, method='POST', style='display:inline;')
+
+                            button(type='submit', class='btn btn-danger') Eliminar
+    
+    a(href='/admin', class='btn btn-secondary mt-3') Volver

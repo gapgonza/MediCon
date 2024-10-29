@@ -1,0 +1,25 @@
+{
+  "name": "beta3",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@fullcalendar/core": "^6.1.15",
+    "@fullcalendar/daygrid": "^6.1.15",
+    "@fullcalendar/interaction": "^6.1.15",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.0",
+    "express-session": "^1.18.0",
+    "mysql2": "^3.11.3",
+    "nodemon": "^3.1.7",
+    "pug": "^3.0.3",
+    "sequelize": "^6.37.4"
+  }
+}

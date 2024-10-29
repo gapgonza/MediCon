@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    h1= title
+    form(action=`/admin/gestionar-agendas/editar/${agenda.id}`, method='POST')
+        div.form-group
+            label(for='profesional') Profesional
+            input#profesional.form-control(type='text', name='profesional', value=agenda.profesional, required)
+        div.form-group
+            label(for='especialidad') Especialidad
+            input#especialidad.form-control(type='text', name='especialidad', value=agenda.especialidad, required)
+        div.form-group
+            label(for='sucursal') Sucursal
+            input#sucursal.form-control(type='text', name='sucursal', value=agenda.sucursal, required)
+        div.form-group
+            label(for='horarios') Horarios
+            input#horarios.form-control(type='text', name='horarios', value=agenda.horarios, required)
+        button.btn.btn-primary(type='submit') Guardar Cambios
+    a(href='/admin/agendas', class='btn btn-secondary mt-3') Volver

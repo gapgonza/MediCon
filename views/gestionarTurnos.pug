@@ -1,0 +1,78 @@
+extends layout
+
+block content
+    h1= title
+    form(action="/admin/turnos/buscar", method="POST")
+        div.form-group
+            label(for="dni") Buscar Paciente por DNI
+            input(type="text", name="dni", id="dni", required)
+            button(type="submit", class="btn btn-primary") Buscar
+
+    if paciente
+        h2 Detalles del Paciente
+        div.form-group
+            label(for="nombre") Nombre
+            input(type="text", name="nombre", value=paciente.nombre, readonly)
+        div.form-group
+            label(for="apellido") Apellido
+            input(type="text", name="apellido", value=paciente.apellido, readonly)
+        div.form-group
+            label(for="dni") DNI
+            input(type="text", name="dni", value=paciente.dni, readonly)
+        div.form-group
+            label(for="obra_social") Obra Social
+            input(type="text", name="obra_social", value=paciente.obraSocial.nombre, readonly)
+        div.form-group
+            label(for="contacto") Teléfono
+            input(type="text", name="contacto", value=paciente.contacto, readonly)
+        div.form-group
+            label(for="email") Email
+            input(type="email", name="email", value=paciente.email, readonly)
+
+        h2 Turnos del Paciente
+        if turnos.length
+            table.table
+                thead
+                    tr
+                        th Fecha
+                        th Hora elegida
+                        //- th Hora de Fin
+                        th Médico
+                        th Motivo
+                        th Estado
+                        th Acciones
+                tbody
+                    each turno in turnos
+                        tr
+                            //- td= turno.fecha_reserva
+                            //- td= turno.hora_inicio
+                            //- td= turno.hora_fin
+                            //- td= turno.medico ? `${turno.medico.Usuario.nombre} ${turno.medico.Usuario.apellido}` : 'Sin médico asignado'
+                            //- td= turno.medico ? turno.medico.nombre + ' ' + turno.medico.apellido : 'Sin médico asignado'
+                            //- td= turno.motivo_consulta
+                            //- td= turno.estado_id == 1 ? 'Activo' : 'Cancelado'
+                            td= turno.fecha_reserva.split('T')[0]
+                            td= turno.hora_elegida
+                            //- td= turno.hora_fin 
+                            td= turno.medico ? `${turno.medico.Usuario.nombre} ${turno.medico.Usuario.apellido}` : 'Sin médico asignado'
+                            td= turno.motivo_consulta
+                            td= turno.estado_id == 1 ? 'Activo' : 'Cancelado'
+                            td
+                                a(href=`/admin/turnos/editar/${turno.turno_id}`, class='btn btn-warning') Editar
+                                form(action=`/admin/turnos/eliminar/${turno.turno_id}`, method='POST', style='display:inline;')
+                                    button(type='submit', class='btn btn-danger') Eliminar
+        else
+            p No hay turnos registrados para este paciente.
+
+        
+        form(action="/admin/turnos/procesar", method="POST")
+            input(type="hidden", name="dni", value=paciente.dni)
+            select(name="medico_id", required)
+                each medico in medicos
+                    option(value=medico.usuario_id)= medico.Usuario.nombre + ' ' + medico.Usuario.apellido
+            .form-group 
+                label(for="motivo_consulta") Motivo de Consulta
+                input(type="text", name="motivo_consulta", required)
+            button(type="submit", class="btn btn-primary mt-3") Siguiente 
+
+    a(href='/admin', class='btn btn-secondary mt-3') Volver

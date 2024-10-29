@@ -1,0 +1,101 @@
+extends layout
+
+block content
+    h1= title
+    form(action=`/admin/profesionales/editar/${profesional.usuario_id}`, method='POST')
+        div.form-group
+            label Nombre
+            p #{profesional.Usuario ? profesional.Usuario.nombre : 'N/A'}
+        div.form-group
+            label Apellido
+            p #{profesional.Usuario ? profesional.Usuario.apellido : 'N/A'}
+        div.form-group
+            label DNI
+            p #{profesional.Usuario ? profesional.Usuario.dni : 'N/A'}
+        div.form-group
+            label(for='especialidad_id') Especialidad
+            select(name='especialidad_id', required)
+                each especialidad in especialidades
+                    option(value=especialidad.especialidad_id, selected=profesional.especialidad_id == especialidad.especialidad_id) #{especialidad.nombre}
+        div.form-group
+            label(for='estado_id') Estado
+            select(name='estado_id', required)
+                option(value="1", selected=profesional.estado_id == 1) Activo
+                option(value="2", selected=profesional.estado_id == 2) Inactivo
+        div.form-group
+            label(for='sucursal_id') Sucursal
+            select(name='sucursal_id', required)
+                each sucursal in sucursales
+                    option(value=sucursal.sucursal_id, selected=profesional.sucursal_id == sucursal.sucursal_id) #{sucursal.nombre}
+        div.form-group
+            label(for='email') Email
+            input(type='email', name='email', value=profesional.Usuario ? profesional.Usuario.email : '', required)
+        button(type='submit', class='btn btn-primary') Guardar Cambios
+    a(href='/admin/profesionales', class='btn btn-secondary mt-3') Volver
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//- extends layout
+
+//- block content
+//-     h1= title
+//-     form(action=`/admin/profesionales/editar/${profesional.usuario_id}`, method='POST')
+//-         div.form-group
+//-             label(for='nombre') Nombre
+//-             input(type='text', name='nombre', value=profesional.Usuario ? profesional.Usuario.nombre : '', required)
+//-         div.form-group
+//-             label(for='apellido') Apellido
+//-             input(type='text', name='apellido', value=profesional.Usuario ? profesional.Usuario.apellido : '', required)
+//-         div.form-group
+//-             label(for='dni') DNI
+//-             input(type='text', name='dni', value=profesional.Usuario ? profesional.Usuario.dni : '', required)
+//-         div.form-group
+//-             label(for='especialidad_id') Especialidad
+//-             select(name='especialidad_id', required)
+//-                 each especialidad in especialidades
+//-                     option(value=especialidad.especialidad_id, selected=profesional.especialidad_id == especialidad.especialidad_id) #{especialidad.nombre}
+//-         div.form-group
+//-             label(for='estado_id') Estado
+//-             select(name='estado_id', required)
+//-                 option(value="1", selected=profesional.estado_id == 1) Activo
+//-                 option(value="2", selected=profesional.estado_id == 2) Inactivo
+//-         div.form-group
+//-             label(for='sucursal_id') Sucursal
+//-             select(name='sucursal_id', required)
+//-                 each sucursal in sucursales
+//-                     option(value=sucursal.sucursal_id, selected=profesional.sucursal_id == sucursal.sucursal_id) #{sucursal.nombre}
+//-         div.form-group
+//-             label(for='email') Email
+//-             input(type='email', name='email', value=profesional.Usuario ? profesional.Usuario.email : '', required)
+//-         button(type='submit', class='btn btn-primary') Guardar Cambios
+//-     a(href='/admin/profesionales', class='btn btn-secondary mt-3') Volver

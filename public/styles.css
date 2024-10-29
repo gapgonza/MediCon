@@ -1,0 +1,266 @@
+/* body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('/images/fondo.jpeg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    overflow: hidden;
+
+}
+
+.container {
+    text-align: center;
+    padding: 50px;
+    max-width: 45%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 30px 32px rgba(0, 5, 20, 1.2);
+}
+.text-container {
+    text-align: center; 
+    margin: 10vh 20%; 
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    background-color: #343a40;
+}
+.navbar-logo {
+    font-size: 24px;
+    color: white;
+}
+.navbar-center {
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+}
+
+.header-image {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+.button-container {
+    display: flex;
+    justify-content: center; 
+    padding-top: 10%;
+}
+.role-button {
+    margin: 0 10px; 
+}
+
+.form-group{
+    margin-bottom: 20px;
+}
+.btn {
+    display: inline-block; 
+    margin-top: 15px; 
+}
+.btn-primary {
+    background-color: #007bff; 
+    border-color: #007bff; 
+    padding: 5px 10px; 
+    font-size: 14px; 
+}
+
+th {
+    background-color: #d4d4d477; 
+}
+
+footer.footer {
+    background-color: #35424a;
+    color: #ffffff;
+    padding-bottom: 0%;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin-top: 20px; 
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #343a40;
+    color: white;
+    font-weight: bold; 
+}
+
+.table tr {
+    background-color: white;
+}
+.btn {
+    margin: 0 5px;
+} */
+
+
+/* General */
+/* body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url('/images/fondo.jpeg'); 
+    background-size: cover;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+p {
+    color: #555;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #5c758f;
+    padding: 10px 20px;
+    color: white;
+}
+
+.navbar-logo img {
+    width: 40px;
+}
+
+.navbar-center {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+
+.container-content {
+    padding: 15px;
+}
+
+.text-container {
+    text-align: center;
+    margin-bottom: 13%;
+    background-color: azure;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.role-button {
+    padding: 8px 15px;
+    font-size: 1em;
+}
+
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+    height: 50px;
+}
+
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    font-size: 0.9em;
+}
+
+
+table.table {
+    width: 100%;
+    background-color: white;
+    margin-bottom: 15px;
+    border-collapse: collapse;
+}
+
+table.table th, table.table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table.table th {
+    background-color: #007bff;
+    color: white;
+}
+
+
+.btn {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+
+html, body {
+    height: 100%;
+}
+
+.container-content {
+    min-height: calc(100vh - 120px);
+} */

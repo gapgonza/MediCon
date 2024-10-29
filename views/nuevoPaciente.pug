@@ -1,0 +1,44 @@
+extends layout
+
+block content
+    h1 Agregar Nuevo Paciente
+    form(action='/admin/pacientes/nuevo', method='POST')
+        div.form-group
+            label(for='nombre') Nombre
+            input#nombre.form-control(type='text', name='nombre', required)
+        
+        div.form-group
+            label(for='apellido') Apellido
+            input#apellido.form-control(type='text', name='apellido', required)
+        
+        div.form-group
+            label(for='dni') Documento
+            input#dni.form-control(type='text', name='dni', required)
+        
+        div.form-group
+            label(for='obra_social_id') Obra Social
+            select#obra_social.form-control(name='obra_social_id', required)
+                option(value='') Seleccione una obra social
+                each obra in obrasSociales
+                    option(value=obra.obra_social_id)= obra.nombre
+        
+        div.form-group
+            label(for='contacto') Contacto
+            input#contacto.form-control(type='text', name='contacto', required)
+        
+        div.form-group
+            label(for='direccion') Dirección
+            input#direccion.form-control(type='text', name='direccion', required)
+        
+        div.form-group
+            label(for='fecha_nacimiento') Fecha de Nacimiento
+            input#fecha_nacimiento.form-control(type='date', name='fecha_nacimiento', required)
+        
+        div.form-group
+            label(for='email') Email
+            input#email.form-control(type='email', name='email', required)
+        
+        button(type='submit', class='btn btn-primary') Agregar Paciente
+    
+    
+    a(href='/admin/pacientes', class='btn btn-secondary mt-3') Volver

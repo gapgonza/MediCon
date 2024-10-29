@@ -1,0 +1,25 @@
+//-calendarView.pug
+extends layout
+
+block content
+    h1= title
+    p Selecciona una fecha y hora para el turno de #{paciente.nombre} con el Dr./Dra. #{medico.Usuario.nombre} #{medico.Usuario.apellido}.
+
+    form(action="/admin/turnos/crear", method="POST")
+        input(type="hidden", name="paciente_id", value=paciente.paciente_id)
+        input(type="hidden", name="medico_id", value=medico.usuario_id)
+        input(type="hidden", name="motivo_consulta", value=motivo_consulta)
+
+        
+        div#calendar
+
+        div.form-group
+            label(for="fecha_reserva") Fecha
+            input(type="date", name="fecha_reserva", id="fecha_reserva", required)
+
+        div.form-group
+            label(for="hora_elegida") Hora
+            input(type="time", name="hora_elegida", id="hora_elegida", required)
+
+        button(type="submit", class="btn btn-primary") Confirmar Turno
+    a(href='/admin/turnos', class='btn btn-secondary mt-3') Volver
